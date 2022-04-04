@@ -12,12 +12,12 @@
         android:layout_height="wrap_content"
         android:text="Word"
         android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/pronuciation"
+        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.144"
-        />
+        app:layout_constraintVertical_bias="0.625" />
 
     <TextView
         android:id="@+id/pronuciation"
@@ -65,42 +65,38 @@
         android:id="@+id/reloadbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="156dp"
         android:layout_marginBottom="228dp"
         android:text="Reload"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actdictbutton"
-        app:layout_constraintVertical_bias="1.0"
-        />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/moveleft"
         android:layout_width="103dp"
         android:layout_height="82dp"
-        android:layout_marginEnd="292dp"
+        android:backgroundTint="#ff0006"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reloadbutton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.674"
-        app:srcCompat="@drawable/ic_photo_back"
-        android:backgroundTint="#ff0006"
-        />
+        app:srcCompat="@drawable/ic_photo_back" />
 
     <ImageButton
         android:id="@+id/moveright"
         android:layout_width="103dp"
         android:layout_height="82dp"
+        android:backgroundTint="#ff0006"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reloadbutton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.674"
-        app:srcCompat="@drawable/ic_photo_front"
-        android:backgroundTint="#ff0006"
-        />
+        app:srcCompat="@drawable/ic_photo_front" />
 
     <Button
         android:id="@+id/go_to_dict_button"
@@ -110,7 +106,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reloadbutton"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/reloadbutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
