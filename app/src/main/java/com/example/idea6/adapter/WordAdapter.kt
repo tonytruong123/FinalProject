@@ -10,7 +10,7 @@ import com.example.idea6.R
 
 
 class WordAdapter (
-    private val context: Context,
+
     //Word Class Placeholder for testing
     private val dataset: List<String>
 
