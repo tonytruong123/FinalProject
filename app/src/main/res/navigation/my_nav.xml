@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/word_of_the_day">
+    app:startDestination="@id/settingsFragment">
 
     <fragment
         android:id="@+id/word_of_the_day"
@@ -22,4 +22,8 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.idea6.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/customDictFragment"
+        android:name="com.example.idea6.CustomDictFragment"
+        android:label="CustomDictFragment" />
 </navigation>
