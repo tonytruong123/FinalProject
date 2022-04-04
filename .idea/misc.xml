@@ -4,11 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
-        <entry key="..\:/cs329_project/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/cs329_project/FinalProject/app/src/main/res/layout/custom_dict.xml" value="0.36666666666666664" />
-        <entry key="..\:/cs329_project/FinalProject/app/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />
-        <entry key="..\:/cs329_project/FinalProject/app/src/main/res/layout/fragment_word_of_the_day.xml" value="0.36666666666666664" />
-        <entry key="..\:/cs329_project/FinalProject/app/src/main/res/layout/word_vertical.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/custom_dict.xml" value="0.34782608695652173" />
+        <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_custom_dict.xml" value="0.34782608695652173" />
+        <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_settings.xml" value="0.34782608695652173" />
+        <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_word_of_the_day.xml" value="0.34782608695652173" />
+        <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/word_vertical.xml" value="0.34782608695652173" />
       </map>
     </option>
   </component>

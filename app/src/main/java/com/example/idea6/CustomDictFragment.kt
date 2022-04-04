@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idea6.databinding.FragmentCustomDictBinding
-import com.example.prototype1.adapter.WordAdapter
+import com.example.idea6.adapter.WordAdapter
 
 /**
  * A simple [Fragment] subclass.
