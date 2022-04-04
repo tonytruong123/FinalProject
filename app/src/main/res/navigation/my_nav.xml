@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/word_of_the_day">
+    app:startDestination="@id/customDictFragment">
 
     <fragment
         android:id="@+id/word_of_the_day"
@@ -17,9 +17,16 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_word_of_the_day_to_customDictFragment"
+            app:destination="@id/customDictFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.idea6.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/customDictFragment"
+        android:name="com.example.idea6.CustomDictFragment"
+        android:label="CustomDictFragment" />
 </navigation>
