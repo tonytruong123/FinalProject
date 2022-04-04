@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Idea6</string>
-    <string name="contribution">JE_contributed</string>
+    <string-array name="themes_array">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>High Contrast</item>
+    </string-array>
+    <string-array name="textSize_array">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
