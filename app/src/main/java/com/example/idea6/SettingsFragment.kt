@@ -23,6 +23,7 @@ class SettingsFragment : Fragment() {
     // Allow access to SettingsViewModel
     private val SettingsViewModel: SettingsViewModel by activityViewModels()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
