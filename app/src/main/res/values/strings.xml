@@ -17,10 +17,10 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="theme_select_prompt">Select theme:</string>
-    <string name="size_select_prompt">Select text size:</string>
-    <string name="display_limit_select_prompt"># Previous words to be displayed:</string>
-    <string name="notif_time_select_prompt">Select notification time:</string>
-    <string name="time_select_button_text">Pick time</string>
+    <string name="theme_select_prompt">Theme</string>
+    <string name="size_select_prompt">Text size:</string>
+    <string name="display_limit_select_prompt">No. of previous words to be stored</string>
+    <string name="notify_time_select_prompt">Notification time</string>
+    <string name="time_select_button_text">Set time</string>
     <string name="reset_settings_button_text">Reset Settings</string>
 </resources>
