@@ -31,10 +31,16 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val custom_dict_button = binding.goToDictButton
+        val settings_button = binding.goToSettings
         custom_dict_button.setOnClickListener{
             val action = word_of_the_dayDirections.actionWordOfTheDayToCustomDictFragment()
             view.findNavController().navigate(action)
         }
+        settings_button.setOnClickListener{
+            val action = word_of_the_dayDirections.actionWordOfTheDayToSettingsFragment()
+            view.findNavController().navigate(action)
+        }
+
     }
 
     override fun onDestroyView() {
