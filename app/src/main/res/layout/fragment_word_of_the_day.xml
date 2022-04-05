@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".word_of_the_day">
 
+
     <View
         android:id="@+id/word_box4"
         android:layout_width="0dp"

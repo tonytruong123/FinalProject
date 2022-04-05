@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.navigation.findNavController
 import com.example.idea6.databinding.FragmentWordOfTheDayBinding
 
+
 class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
 
     private var _binding: FragmentWordOfTheDayBinding? = null
