@@ -42,8 +42,7 @@
                 android:contentDescription="@string/app_name"
                 android:minHeight="48dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/themeText"
-                tools:ignore="DuplicateSpeakableTextCheck" />
+                app:layout_constraintTop_toBottomOf="@id/themeText" />
 
             <View
                 android:id="@+id/divider1"
@@ -114,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/notif_time_select_prompt"
+                android:text="@string/notify_time_select_prompt"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/divider3" />
