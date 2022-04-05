@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.idea6.databinding.FragmentSettingsBinding
@@ -16,7 +14,7 @@ import com.example.idea6.model.SettingsViewModel
 /**
  * [SettingsFragment] allows the user to configure a variety of settings for the app.
  */
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     // Setup view binding for use in fragment
     private var _binding: FragmentSettingsBinding? = null
@@ -74,16 +72,6 @@ class SettingsFragment : Fragment() {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 displayLimitSpinner.adapter = adapter
             }
-            val timePicker = TimePickerDialog(
-                it,
-                timePickerDialogListener,
-                12,
-                10,
-                false
-            )
-            timeSelectButton.setOnClickListener {
-                timePicker.show()
-            }
         }
 
         return view
@@ -105,5 +93,40 @@ class SettingsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    /**
+     * The following two methods are called when the user makes a selection from the Spinner objects.
+     */
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        when (p0!!.id) {
+            R.id.themeSpinner -> {
+                SettingsViewModel.setTheme(p0.getItemAtPosition(p2).toString())
+            }
+            R.id.textSizeSpinner -> {
+                SettingsViewModel.setTextSize(p0.getItemAtPosition(p2).toString())
+            }
+            R.id.displayLimitSpinner -> {
+                SettingsViewModel.setDisplayLimit(p0.getItemAtPosition(p2).toString().toInt())
+            }
+        }
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
+
+    /**
+     * Shows a [TimePickerDialog] to set the daily notification time.
+     */
+    fun showTimePickerDialog() {
+        val timePicker = TimePickerDialog(
+            requireContext(),
+            timePickerDialogListener,
+            12,
+            10,
+            false
+        )
+        timePicker.show()
     }
 }
