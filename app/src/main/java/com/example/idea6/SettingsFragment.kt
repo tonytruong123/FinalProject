@@ -39,8 +39,11 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         // Setup spinners
         val themeSpinner: Spinner = binding.themeSpinner
+        themeSpinner.onItemSelectedListener = this
         val textSizeSpinner: Spinner = binding.textSizeSpinner
+        textSizeSpinner.onItemSelectedListener = this
         val displayLimitSpinner: Spinner = binding.displayLimitSpinner
+        textSizeSpinner.onItemSelectedListener = this
 
         val timeSelectButton: Button = binding.timeSelectButton
 
@@ -79,7 +82,7 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.apply {
+        binding.apply {
             lifecycleOwner = viewLifecycleOwner
             settingsViewModel = SettingsViewModel
             settingsFragment = this@SettingsFragment
