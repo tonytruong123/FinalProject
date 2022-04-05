@@ -11,15 +11,11 @@
         android:label="fragment_word_of_the_day"
         tools:layout="@layout/fragment_word_of_the_day" >
         <action
-            android:id="@+id/action_word_of_the_day_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
             android:id="@+id/action_word_of_the_day_to_customDictFragment"
             app:destination="@id/customDictFragment" />
+        <action
+            android:id="@+id/action_word_of_the_day_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

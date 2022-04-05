@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.findNavController
 import com.example.idea6.databinding.FragmentWordOfTheDayBinding
 
 class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
@@ -30,6 +31,10 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val custom_dict_button = binding.goToDictButton
+        custom_dict_button.setOnClickListener{
+            val action = word_of_the_dayDirections.actionWordOfTheDayToCustomDictFragment()
+            view.findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {
