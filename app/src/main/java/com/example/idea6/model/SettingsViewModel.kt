@@ -12,6 +12,9 @@ class SettingsViewModel : ViewModel() {
     private val _textSize = MutableLiveData<String>("")
     val textSize: LiveData<String> = _textSize
 
+    private val _displayLimit = MutableLiveData<Int>(0)
+    val displayLimit: LiveData<Int> = _displayLimit
+
     private val _notifyHour = MutableLiveData<Int>(0)
     val notifyHour: LiveData<Int> = _notifyHour
 
@@ -24,6 +27,10 @@ class SettingsViewModel : ViewModel() {
 
     fun setTextSize(textSize: String) {
         _textSize.value = textSize
+    }
+
+    fun setDisplayLimit(displayLimit: Int) {
+        _displayLimit.value = displayLimit
     }
 
     fun setHour(hour: Int) {
