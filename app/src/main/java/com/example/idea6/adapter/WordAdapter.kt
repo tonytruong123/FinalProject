@@ -3,6 +3,7 @@ package com.example.idea6.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DiffUtil
@@ -10,33 +11,42 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idea6.R
 import com.example.idea6.customdict.CustomDict
+import com.example.idea6.customdict.CustomDictViewModel
 
 
-class WordAdapter : ListAdapter<CustomDict, WordAdapter.WordViewHolder>(WordsComparator()) {
+class WordAdapter(
+    private val customDictViewModel: CustomDictViewModel
+) : ListAdapter<CustomDict, WordAdapter.CustomDictViewHolder>(WordsComparator()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
-        return WordViewHolder.create(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomDictViewHolder {
+        return CustomDictViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CustomDictViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.name, current.definition)
+        holder.bind(current.name, current.definition, customDictViewModel)
     }
 
-    class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CustomDictViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val word_mainView: TextView = itemView!!.findViewById(R.id.main_word)
         val word_defView: TextView = itemView!!.findViewById(R.id.word_def)
+        val del_button: Button = itemView!!.findViewById(R.id.remove_word)
 
-        fun bind(text: String?, definition: String?) {
+        fun bind(text: String?, definition: String?, customDictViewModel: CustomDictViewModel) {
             word_mainView.text = text
             word_defView.text = definition
+            del_button.setOnClickListener{
+                if (text != null) {
+                    customDictViewModel.delete(text)
+                }
+            }
         }
 
         companion object {
-            fun create(parent: ViewGroup): WordViewHolder {
+            fun create(parent: ViewGroup): CustomDictViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.word_vertical, parent, false)
-                return WordViewHolder(view)
+                return CustomDictViewHolder(view)
             }
         }
     }

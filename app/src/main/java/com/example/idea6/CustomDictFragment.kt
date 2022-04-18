@@ -47,7 +47,7 @@ class CustomDictFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         //Test Words
 //        val test_words = listOf("Test1", "Test2", "Test3", "Test4", "Test1", "Test2", "Test3", "Test4")
-        val adapter = WordAdapter()
+        val adapter = WordAdapter(customDictViewModel)
         recyclerView.adapter = adapter
         customDictViewModel.allWords.observe(viewLifecycleOwner) { words ->
             words.let { adapter.submitList(it) }
