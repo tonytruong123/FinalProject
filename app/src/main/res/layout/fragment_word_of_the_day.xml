@@ -70,28 +70,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/moveleft"
-        android:layout_width="103dp"
-        android:layout_height="82dp"
-        android:layout_marginBottom="64dp"
-        android:backgroundTint="#ff0006"
-        app:layout_constraintBottom_toTopOf="@+id/go_to_dict_button"
-        app:layout_constraintEnd_toStartOf="@+id/reloadbutton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_photo_back" />
-
-    <ImageButton
-        android:id="@+id/moveright"
-        android:layout_width="103dp"
-        android:layout_height="82dp"
-        android:layout_marginBottom="64dp"
-        android:backgroundTint="#ff0006"
-        app:layout_constraintBottom_toTopOf="@+id/go_to_dict_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/reloadbutton"
-        app:srcCompat="@drawable/ic_photo_front" />
-
     <Button
         android:id="@+id/go_to_dict_button"
         android:layout_width="wrap_content"

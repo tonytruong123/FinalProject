@@ -18,6 +18,7 @@ import com.example.idea6.customdict.CustomDictViewModelFactory
 import com.example.idea6.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +29,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val dir = getFilesDir()
+
+        copyFile("dictionary.xls")
+
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -41,10 +46,19 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         // Make sure actions in the ActionBar get propagated to the NavController
         //setupActionBarWithNavController(navController)
+
     }
 
     public fun getDatabase(): CustomDictViewModel {
         return customDictViewModel
+    }
+
+    fun copyFile(filename: String) {
+        this.assets.open(filename).use { stream ->
+            File("${this.filesDir}/$filename").outputStream().use {
+                stream.copyTo(it)
+            }
+        }
     }
 
 }

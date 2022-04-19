@@ -29,7 +29,6 @@ class CustomDictFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         activity = getActivity() as MainActivity
         customDictViewModel = activity.getDatabase()
-        customDictViewModel.delete("af")
         super.onCreate(savedInstanceState)
     }
 
@@ -49,6 +48,11 @@ class CustomDictFragment : Fragment() {
 //        val test_words = listOf("Test1", "Test2", "Test3", "Test4", "Test1", "Test2", "Test3", "Test4")
         val adapter = WordAdapter(customDictViewModel)
         recyclerView.adapter = adapter
+//        customDictViewModel.insert(CustomDict("ab", "bb"))
+//        customDictViewModel.insert(CustomDict("af", "bb"))
+//        customDictViewModel.insert(CustomDict("ae", "bb"))
+//        customDictViewModel.insert(CustomDict("aq", "bb"))
+//        customDictViewModel.insert(CustomDict("ag", "bb"))
         customDictViewModel.allWords.observe(viewLifecycleOwner) { words ->
             words.let { adapter.submitList(it) }
         }
