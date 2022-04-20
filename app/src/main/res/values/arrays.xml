@@ -3,7 +3,7 @@
     <string-array name="themes_array">
         <item>Light</item>
         <item>Dark</item>
-        <item>High Contrast</item>
+        <item>System Default</item>
     </string-array>
     <string-array name="text_size_array">
         <item>Small</item>
