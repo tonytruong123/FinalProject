@@ -1,26 +1,22 @@
 package com.example.idea6
 
 import android.os.Bundle
+import android.util.Log.d
 import android.view.LayoutInflater
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.idea6.customdict.CustomDict
 import com.example.idea6.customdict.CustomDictViewModel
-import com.example.idea6.customdict.CustomDictViewModelFactory
 import com.example.idea6.databinding.FragmentWordOfTheDayBinding
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.ss.usermodel.DataFormatter
-import java.io.File
-import java.io.FileInputStream
+import java.io.*
 import java.util.*
 import kotlin.random.Random
 import kotlin.random.nextInt
-
 
 
 class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
@@ -53,19 +49,37 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
         val reload_button = binding.reloadbutton
         val add_dict_button = binding.actdictbutton
 
-        //Generate Random Number
+        //Open Dictionary
         val file: File = File(context?.filesDir, "dictionary.xls")
         var fileInputStream: FileInputStream? = null
         fileInputStream = FileInputStream(file);
         val workbook = HSSFWorkbook(fileInputStream);
         val sheet = workbook.getSheetAt(0);
         val formatter = DataFormatter()
-        var myRandomInt = Random.nextInt(1..13161)
-        var wordName = formatter.formatCellValue(sheet.getRow(myRandomInt).getCell(0))
-        var wordDef = formatter.formatCellValue(sheet.getRow(myRandomInt).getCell(1))
-        //Change Def and Name
-        binding.word.text = wordName
-        binding.definition.text = wordDef
+        //Generate Ranadom Number and get word
+        var myRandomInt:Int = 0
+        var wordName:String = ""
+        var wordDef:String = ""
+
+        val save_index = File(context?.filesDir, "lastword.txt")
+        d("check1", "aaa")
+        if(save_index.exists()){
+            myRandomInt = read_index()
+            wordName = formatter.formatCellValue(sheet.getRow(myRandomInt).getCell(0))
+            wordDef = formatter.formatCellValue(sheet.getRow(myRandomInt).getCell(1))
+            //Change Def and Name
+            binding.word.text = wordName
+            binding.definition.text = wordDef
+        }else{
+            d("check2", "bbb")
+            myRandomInt = Random.nextInt(1..13161)
+            wordName = formatter.formatCellValue(sheet.getRow(myRandomInt).getCell(0))
+            wordDef = formatter.formatCellValue(sheet.getRow(myRandomInt).getCell(1))
+            //Change Def and Name
+            binding.word.text = wordName
+            binding.definition.text = wordDef
+            write_to_file(myRandomInt)
+        }
 
         //Change word
         reload_button.setOnClickListener{
@@ -74,6 +88,9 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
             wordDef = formatter.formatCellValue(sheet.getRow(myRandomInt).getCell(1))
             binding.word.text = wordName
             binding.definition.text = wordDef
+            //Write current word to save
+            delete_index()
+            write_to_file(myRandomInt)
         }
         custom_dict_button.setOnClickListener{
             val action = word_of_the_dayDirections.actionWordOfTheDayToCustomDictFragment()
@@ -88,6 +105,25 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
             view.findNavController().navigate(action)
         }
 
+    }
+
+    fun write_to_file(word_index:Int){
+        val bufferedWriter =
+            BufferedWriter(FileWriter(File(context?.filesDir.toString() + File.separator + "lastword.txt")))
+        bufferedWriter.write(word_index.toString())
+        bufferedWriter.close()
+    }
+
+    fun delete_index(){
+        val file = File(context?.filesDir, "lastword.txt")
+        file.delete()
+    }
+
+    fun read_index():Int{
+        val bufferedReader: BufferedReader = File(context?.filesDir, "lastword.txt").bufferedReader()
+        val index = bufferedReader.use { it.readText() }
+        d("test", index)
+        return((index).toInt())
     }
 
     override fun onDestroyView() {
