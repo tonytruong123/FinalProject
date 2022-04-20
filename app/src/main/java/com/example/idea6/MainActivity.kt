@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val KEY_THEME = "theme_color"
-        private const val LIGHT = R.style.AppTheme_Light
-        private const val DARK = R.style.AppTheme_Dark
-        private const val HIGH_CONTRAST = R.style.AppTheme_HighContrast
+        private const val LIGHT = R.style.Theme_Material3_Light
+        private const val DARK = R.style.Theme_Material3_Dark
+        private const val SYSTEM_DEFAULT = R.style.Theme_Material3_DayNight
         const val CHANNEL_ID = "new_word_id"
     }
 
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         when (PreferenceManager.getDefaultSharedPreferences(this).getString(KEY_THEME, "Light")) {
             "Light" -> currentTheme = LIGHT
             "Dark" -> currentTheme = DARK
-            "High Contrast" -> currentTheme = HIGH_CONTRAST
+            "System Default" -> currentTheme = SYSTEM_DEFAULT
         }
     }
 
