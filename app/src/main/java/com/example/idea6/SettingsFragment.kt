@@ -27,9 +27,8 @@ class NewSettingsFragment : PreferenceFragmentCompat(),
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
-            "theme_color" -> {
-                activity?.recreate()
-            }
+            "theme_color" -> activity?.recreate()
+            "text_size" -> activity?.recreate()
         }
     }
 }
