@@ -16,4 +16,6 @@
     <string name="daily_notification_time">Notification time</string>
     <string name="select_time">Select notification time</string>
     <string name="notification_time">%s</string>
+    <string name="channel_name">word_notif</string>
+    <string name="channel_description">word_refresh</string>
 </resources>
