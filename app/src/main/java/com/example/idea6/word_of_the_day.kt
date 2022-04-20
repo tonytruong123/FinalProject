@@ -1,10 +1,14 @@
 package com.example.idea6
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -18,9 +22,7 @@ import java.util.*
 import kotlin.random.Random
 import kotlin.random.nextInt
 
-
 class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
-
     private var _binding: FragmentWordOfTheDayBinding? = null
     private val binding get() = _binding!!
     private lateinit var customDictViewModel: CustomDictViewModel
@@ -91,6 +93,7 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
             //Write current word to save
             delete_index()
             write_to_file(myRandomInt)
+            rotater()
         }
         custom_dict_button.setOnClickListener{
             val action = word_of_the_dayDirections.actionWordOfTheDayToCustomDictFragment()
@@ -105,6 +108,26 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
             view.findNavController().navigate(action)
         }
 
+    }
+    // disableView
+    private fun ObjectAnimator.disableViewDuringAnimation(view: View){
+        addListener(object: AnimatorListenerAdapter(){
+            override fun onAnimationStart(animation: Animator?){
+                view.isEnabled = false
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                view.isEnabled = true
+            }
+        })
+    }
+
+    private fun rotater() {
+        val reloadbutton:Button
+        val animator = ObjectAnimator.ofFloat(binding.reloadbutton, View.ROTATION, -360f,0f)
+        animator.duration = 1000
+        animator.disableViewDuringAnimation(binding.reloadbutton)
+        animator.start()
     }
 
     fun write_to_file(word_index:Int){
@@ -130,5 +153,6 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
         super.onDestroyView()
         _binding = null
     }
+
 
 }
