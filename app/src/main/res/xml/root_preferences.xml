@@ -11,22 +11,6 @@
             app:title="@string/theme"
             app:useSimpleSummaryProvider="true" />
 
-        <ListPreference
-            app:defaultValue="Medium"
-            app:entries="@array/text_size_array"
-            app:entryValues="@array/text_size_array"
-            app:key="text_size"
-            app:title="@string/text_size"
-            app:useSimpleSummaryProvider="true" />
-
-        <ListPreference
-            app:defaultValue="14"
-            app:entries="@array/displayLimit_array"
-            app:entryValues="@array/displayLimit_array"
-            app:key="display_limit"
-            app:title="Number of words on display"
-            app:useSimpleSummaryProvider="true" />
-
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/notification_header">
