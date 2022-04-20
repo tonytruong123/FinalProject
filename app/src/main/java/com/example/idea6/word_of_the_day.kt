@@ -104,7 +104,7 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
             Toast.makeText(getActivity(), "${wordName} added to dictionary", Toast.LENGTH_SHORT).show()
         }
         settings_button.setOnClickListener{
-            val action = word_of_the_dayDirections.actionWordOfTheDayToSettingsFragment()
+            val action = word_of_the_dayDirections.actionWordOfTheDayToNewSettingsFragment()
             view.findNavController().navigate(action)
         }
 

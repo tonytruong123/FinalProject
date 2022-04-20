@@ -1,0 +1,46 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/visuals_header">
+
+        <ListPreference
+            app:defaultValue="Light"
+            app:entries="@array/themes_array"
+            app:entryValues="@array/themes_array"
+            app:key="theme_color"
+            app:title="@string/theme"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="Medium"
+            app:entries="@array/text_size_array"
+            app:entryValues="@array/text_size_array"
+            app:key="text_size"
+            app:title="@string/text_size"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="14"
+            app:entries="@array/displayLimit_array"
+            app:entryValues="@array/displayLimit_array"
+            app:key="display_limit"
+            app:title="Number of words on display"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/notification_header">
+
+        <SwitchPreferenceCompat
+            app:key="notification"
+            app:title="@string/turn_on_notification"
+            app:summaryOn="@string/notifications_summary_on"
+            app:summaryOff="@string/notifications_summary_off"/>
+
+        <com.example.idea6.TimePickerPreference
+            android:layout="@layout/time_picker_preference"
+            android:selectable="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

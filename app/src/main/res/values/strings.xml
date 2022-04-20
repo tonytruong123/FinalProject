@@ -1,26 +1,19 @@
 <resources>
     <string name="app_name">Idea6</string>
-    <string-array name="themes_array">
-        <item>Light</item>
-        <item>Dark</item>
-        <item>High Contrast</item>
-    </string-array>
-    <string-array name="textSize_array">
-        <item>Small</item>
-        <item>Medium</item>
-        <item>Large</item>
-    </string-array>
-    <string-array name="displayLimit_array">
-        <item>7</item>
-        <item>14</item>
-        <item>30</item>
-    </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="theme_select_prompt">Theme</string>
-    <string name="size_select_prompt">Text size</string>
-    <string name="display_limit_select_prompt">No. of previous words to be stored</string>
-    <string name="notify_time_select_prompt">Notification time</string>
-    <string name="time_select_button_text">Set time</string>
-    <string name="reset_settings_button_text">Reset Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="visuals_header">Display</string>
+    <string name="notification_header">Notifications</string>
+
+    <!-- Display Preferences -->
+    <string name="theme">Theme</string>
+    <string name="text_size">Text size</string>
+
+    <!-- Notification Preferences -->
+    <string name="turn_on_notification">Daily notification</string>
+    <string name="notifications_summary_on">Send Word of the Day notifications</string>
+    <string name="notifications_summary_off">Do not send Word of the Day notifications</string>
+    <string name="daily_notification_time">Notification time</string>
+    <string name="select_time">Select notification time</string>
+    <string name="notification_time">%s</string>
 </resources>
