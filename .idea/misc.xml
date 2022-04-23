@@ -4,7 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.12314814814814815" />
+        <entry key="..\:/FinalProject/app/src/main/res/layout/fragment_custom_dict.xml" value="0.31023550724637683" />
         <entry key="..\:/FinalProject/app/src/main/res/layout/fragment_word_of_the_day.xml" value="0.22" />
+        <entry key="..\:/FinalProject/app/src/main/res/layout/time_picker_preference.xml" value="0.31023550724637683" />
+        <entry key="..\:/FinalProject/app/src/main/res/layout/word_vertical.xml" value="0.31023550724637683" />
+        <entry key="..\:/FinalProject/app/src/main/res/menu/bottm_nav.xml" value="0.36666666666666664" />
+        <entry key="..\:/FinalProject/app/src/main/res/xml/root_preferences.xml" value="0.2980072463768116" />
         <entry key="..\:/Users/jihyu/OneDrive/Documents/FinalProject/app/src/main/res/layout/fragment_custom_dict.xml" value="0.175" />
         <entry key="..\:/Users/jihyu/OneDrive/Documents/FinalProject/app/src/main/res/layout/fragment_settings.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/jihyu/OneDrive/Documents/FinalProject/app/src/main/res/layout/fragment_word_of_the_day.xml" value="0.11005434782608696" />

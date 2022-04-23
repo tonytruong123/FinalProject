@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
 import androidx.activity.viewModels
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -22,11 +23,13 @@ import com.example.idea6.customdict.CustomDictViewModel
 import com.example.idea6.customdict.CustomDictViewModelFactory
 import com.example.idea6.databinding.ActivityMainBinding
 import com.example.idea6.worker.RefreshWorkWorker
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import java.io.File
 import java.util.concurrent.TimeUnit
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
@@ -46,12 +49,27 @@ class MainActivity : AppCompatActivity() {
         private const val SYSTEM_DEFAULT = R.style.Theme_Material3_DayNight
         const val CHANNEL_ID = "new_word_id"
     }
-
+    lateinit var wordOfTheDay: word_of_the_day
+    lateinit var CustomDictFragment: CustomDictFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         getThemeFromSettings()
         super.onCreate(savedInstanceState)
         setTheme()
 
+//        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_nav)
+//        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+//            when (item.itemId){
+//                R.id.home -> {
+//                    wordOfTheDay = word_of_the_day()
+//                    supportFragmentManager
+//                        .beginTransaction()
+//                        .replace(R.id.frame_layout, wordOfTheDay)
+//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                        .commit()
+//                }
+//            }
+//            true
+//        }
         val dir = getFilesDir()
 
         copyFile("dictionary.xls")

@@ -28,10 +28,12 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
     private lateinit var customDictViewModel: CustomDictViewModel
     private lateinit var activity:MainActivity
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         activity = getActivity() as MainActivity
         customDictViewModel = activity.getDatabase()
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
