@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.12314814814814815" />
+        <entry key="..\:/FinalProject/app/src/main/res/layout/fragment_word_of_the_day.xml" value="0.22" />
         <entry key="..\:/Users/jihyu/OneDrive/Documents/FinalProject/app/src/main/res/layout/fragment_custom_dict.xml" value="0.175" />
         <entry key="..\:/Users/jihyu/OneDrive/Documents/FinalProject/app/src/main/res/layout/fragment_settings.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/jihyu/OneDrive/Documents/FinalProject/app/src/main/res/layout/fragment_word_of_the_day.xml" value="0.11005434782608696" />
