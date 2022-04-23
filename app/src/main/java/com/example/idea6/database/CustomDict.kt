@@ -1,4 +1,4 @@
-package com.example.idea6.customdict
+package com.example.idea6.database
 
 import androidx.room.*
 

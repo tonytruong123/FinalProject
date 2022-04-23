@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idea6.adapter.WordAdapter
-import com.example.idea6.customdict.CustomDict
 import com.example.idea6.customdict.CustomDictViewModel
 import com.example.idea6.databinding.FragmentCustomDictBinding
 

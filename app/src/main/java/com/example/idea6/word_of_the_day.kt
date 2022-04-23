@@ -12,13 +12,12 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.idea6.customdict.CustomDict
+import com.example.idea6.database.CustomDict
 import com.example.idea6.customdict.CustomDictViewModel
 import com.example.idea6.databinding.FragmentWordOfTheDayBinding
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.ss.usermodel.DataFormatter
 import java.io.*
-import java.util.*
 import kotlin.random.Random
 import kotlin.random.nextInt
 

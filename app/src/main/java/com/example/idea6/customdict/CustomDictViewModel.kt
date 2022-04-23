@@ -1,7 +1,7 @@
 package com.example.idea6.customdict
 
 import androidx.lifecycle.*
-import com.example.idea6.data.Word
+import com.example.idea6.database.CustomDict
 import kotlinx.coroutines.launch
 
 class CustomDictViewModel(private val repository: CustomDictRepository) : ViewModel() {

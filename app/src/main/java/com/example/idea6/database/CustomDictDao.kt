@@ -1,7 +1,6 @@
-package com.example.idea6.customdict
+package com.example.idea6.database
 
 import androidx.room.*
-import com.example.idea6.data.Word
 import kotlinx.coroutines.flow.Flow
 
 @Dao

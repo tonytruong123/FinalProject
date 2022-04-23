@@ -5,12 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.lifecycle.*
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idea6.R
-import com.example.idea6.customdict.CustomDict
+import com.example.idea6.database.CustomDict
 import com.example.idea6.customdict.CustomDictViewModel
 
 

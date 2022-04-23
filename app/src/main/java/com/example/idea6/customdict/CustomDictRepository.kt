@@ -1,7 +1,8 @@
 package com.example.idea6.customdict
 
 import androidx.annotation.WorkerThread
-import com.example.idea6.data.Word
+import com.example.idea6.database.CustomDict
+import com.example.idea6.database.CustomDictDao
 import kotlinx.coroutines.flow.Flow
 
 class CustomDictRepository(private val customDictDao: CustomDictDao) {

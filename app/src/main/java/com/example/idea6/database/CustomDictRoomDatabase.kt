@@ -1,10 +1,8 @@
-package com.example.idea6.customdict
+package com.example.idea6.database
 
 import android.content.Context
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 @Database(entities = [CustomDict::class], version = 1, exportSchema = false)
 abstract class CustomDictRoomDatabase : RoomDatabase() {

@@ -2,7 +2,7 @@ package com.example.idea6
 
 import android.app.Application
 import com.example.idea6.customdict.CustomDictRepository
-import com.example.idea6.customdict.CustomDictRoomDatabase
+import com.example.idea6.database.CustomDictRoomDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
