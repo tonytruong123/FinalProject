@@ -14,4 +14,7 @@ class CustomDictRepository(private val customDictDao: CustomDictDao) {
     suspend fun delete(name: String) {
         customDictDao.delete(name)
     }
+    fun wordIsPresent(name: String): Boolean {
+        return customDictDao.containsPrimaryKey(name)
+    }
 }

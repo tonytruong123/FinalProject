@@ -12,6 +12,9 @@ class CustomDictViewModel(private val repository: CustomDictRepository) : ViewMo
     fun delete(name: String) = viewModelScope.launch {
         repository.delete(name)
     }
+    fun wordIsPresent(name: String): Boolean {
+        return repository.wordIsPresent(name)
+    }
 }
 
 class CustomDictViewModelFactory(private val repository: CustomDictRepository) :

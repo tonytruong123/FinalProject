@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.*
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = [CustomDict::class], version = 1, exportSchema = false)
+@Database(entities = [CustomDict::class], version = 2, exportSchema = false)
 abstract class CustomDictRoomDatabase : RoomDatabase() {
 
     abstract fun customDictDao(): CustomDictDao

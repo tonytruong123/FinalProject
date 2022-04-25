@@ -8,5 +8,8 @@ data class CustomDict(
     @PrimaryKey @ColumnInfo(name = "name")
     val name: String,
 
+    @ColumnInfo(name = "pronunciation")
+    val pronunciation: String,
+
     @ColumnInfo(name = "definition")
     val definition: String)

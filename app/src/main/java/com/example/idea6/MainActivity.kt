@@ -3,11 +3,12 @@ package com.example.idea6
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
 import androidx.work.*
 import com.example.idea6.customdict.CustomDictViewModel
@@ -16,6 +17,7 @@ import com.example.idea6.databinding.ActivityMainBinding
 import com.example.idea6.worker.RefreshWorkWorker
 import java.io.File
 import java.util.concurrent.TimeUnit
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     private val workManager by lazy {
         WorkManager.getInstance(applicationContext)
     }
-
     private var currentTheme = LIGHT
 
     companion object {
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         val dir = getFilesDir()
 
-        copyFile("dictionary.xls")
+        copyFile("dictionary_edit.xls")
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         // Instantiate the navController using the NavHostFragment
         navController = navHostFragment.navController
         // Make sure actions in the ActionBar get propagated to the NavController
-        //setupActionBarWithNavController(navController)
+        // setupActionBarWithNavController(navController)
         createNotificationChannel()
         createPeriodicWorkRequest()
     }
