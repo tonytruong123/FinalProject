@@ -90,18 +90,20 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
         }
 
         val save_index = File(context?.filesDir, "lastword.txt")
+        val random = Random(System.currentTimeMillis())
+
         if(save_index.exists()){
             myRandomInt = read_index()
             updateWord(myRandomInt)
         }else{
-            myRandomInt = Random.nextInt(1..13161)
+            myRandomInt = random.nextInt(1..13161)
             updateWord(myRandomInt)
             write_to_file(myRandomInt)
         }
 
         //Change word
         reload_button.setOnClickListener{
-            myRandomInt = Random.nextInt(1..13161)
+            myRandomInt = random.nextInt(1..13161)
             updateWord(myRandomInt)
             //Write current word to save
             delete_index()

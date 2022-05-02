@@ -28,13 +28,14 @@ class RefreshWorkWorker(
 
         //Refresh Word
         val save_index = File(context?.filesDir, "lastword.txt")
-        var myRandomInt:Int = 0
+        val random = Random(System.currentTimeMillis())
+        var myRandomInt:Int
         if(save_index.exists()){
             delete_index()
-            myRandomInt = Random.nextInt(1..13161)
+            myRandomInt = random.nextInt(1..13161)
             write_to_file(myRandomInt)
         }else{
-            myRandomInt = Random.nextInt(1..13161)
+            myRandomInt = random.nextInt(1..13161)
             write_to_file(myRandomInt)
         }
         d("Changed File", myRandomInt.toString())
