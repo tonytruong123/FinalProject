@@ -45,8 +45,6 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val custom_dict_button = binding.goToDictButton
-        val settings_button = binding.goToSettings
         val reload_button = binding.reloadbutton
         val add_dict_button = binding.actdictbutton
 
@@ -114,19 +112,12 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
             rotater()
             scaler()
         }
-        custom_dict_button.setOnClickListener{
-            val action = word_of_the_dayDirections.actionWordOfTheDayToCustomDictFragment()
-            view.findNavController().navigate(action)
-        }
         add_dict_button.setOnClickListener{
             customDictViewModel.insert(CustomDict(wordName, wordPron, wordDef))
             Toast.makeText(getActivity(), "$wordName added to dictionary", Toast.LENGTH_SHORT).show()
             updateButton(wordName)
         }
-        settings_button.setOnClickListener{
-            val action = word_of_the_dayDirections.actionWordOfTheDayToNewSettingsFragment()
-            view.findNavController().navigate(action)
-        }
+
     }
     // disableView
     private fun ObjectAnimator.disableViewDuringAnimation(view: View){

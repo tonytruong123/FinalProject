@@ -10,11 +10,14 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
+import androidx.viewpager2.widget.ViewPager2
 import androidx.work.*
 import com.example.idea6.customdict.CustomDictViewModel
 import com.example.idea6.customdict.CustomDictViewModelFactory
 import com.example.idea6.databinding.ActivityMainBinding
 import com.example.idea6.worker.RefreshWorkWorker
+import com.example.idea6.worker.TabPageAdapter
+import com.google.android.material.tabs.TabLayout
 import java.io.File
 import java.util.concurrent.TimeUnit
 
@@ -41,29 +44,43 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         getThemeFromSettings()
         super.onCreate(savedInstanceState)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setUpTabBar()
         setTheme()
+
+
 
         val dir = getFilesDir()
 
         copyFile("dictionary_edit.xls")
-
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-//        customDictViewModel.insert(CustomDict("ac", "bc"))
-//        customDictViewModel.delete("ac")
-
-        // Get the navigation host fragment from this Activity
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        // Instantiate the navController using the NavHostFragment
-        navController = navHostFragment.navController
-        // Make sure actions in the ActionBar get propagated to the NavController
-        // setupActionBarWithNavController(navController)
         createNotificationChannel()
         createPeriodicWorkRequest()
     }
+    private fun setUpTabBar()
+    {
+        val tabs = findViewById<TabLayout>(R.id.tabLayout)
+        val adapter = TabPageAdapter(this, tabs.tabCount)
+        val  viewPager = findViewById<ViewPager2>(R.id.viewPager)
+        viewPager.adapter = adapter
+        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()
+        {
+            override fun onPageSelected(position: Int) {
+                tabs.selectTab(tabs.getTabAt(position))
+            }
+        })
 
+        tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener
+        {
+            override fun onTabSelected(tab: TabLayout.Tab)
+            {
+                viewPager.currentItem = tab.position
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+    }
     public fun getDatabase(): CustomDictViewModel {
         return customDictViewModel
     }
