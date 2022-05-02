@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
+import android.widget.RelativeLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -23,6 +24,7 @@ import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
+    var globalVar = 0
 
     private lateinit var navController: NavController
     private val customDictViewModel: CustomDictViewModel by viewModels {
@@ -46,9 +48,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setUpTabBar()
         setTheme()
-
+        setUpTabBar()
+        setBackground()
+        val relativeLayout1 = findViewById<RelativeLayout>(R.id.relativeLayout1)
+        if (globalVar == 0){ relativeLayout1.setBackgroundResource(R.color.white)}
+        if (globalVar == 1){ relativeLayout1.setBackgroundResource(R.color.scuff)}
 
 
         val dir = getFilesDir()
@@ -105,6 +110,12 @@ class MainActivity : AppCompatActivity() {
             "Light" -> currentTheme = LIGHT
             "Dark" -> currentTheme = DARK
             "System Default" -> currentTheme = SYSTEM_DEFAULT
+        }
+    }
+    private fun setBackground() {
+        when (PreferenceManager.getDefaultSharedPreferences(this).getString(KEY_THEME, "Light")) {
+            "Light" -> globalVar = 0
+            "Dark" -> globalVar = 1
         }
     }
 
