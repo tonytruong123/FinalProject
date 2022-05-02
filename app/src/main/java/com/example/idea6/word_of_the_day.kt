@@ -90,12 +90,10 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
         }
 
         val save_index = File(context?.filesDir, "lastword.txt")
-        d("check1", "aaa")
         if(save_index.exists()){
             myRandomInt = read_index()
             updateWord(myRandomInt)
         }else{
-            d("check2", "bbb")
             myRandomInt = Random.nextInt(1..13161)
             updateWord(myRandomInt)
             write_to_file(myRandomInt)
@@ -164,7 +162,6 @@ class word_of_the_day : Fragment(R.layout.fragment_word_of_the_day) {
     private fun read_index():Int{
         val bufferedReader: BufferedReader = File(context?.filesDir, "lastword.txt").bufferedReader()
         val index = bufferedReader.use { it.readText() }
-        d("test", index)
         return((index).toInt())
     }
 

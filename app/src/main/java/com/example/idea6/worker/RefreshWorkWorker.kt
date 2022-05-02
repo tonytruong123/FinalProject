@@ -7,6 +7,7 @@ import android.util.Log
 import android.util.Log.d
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.preference.PreferenceManager
 import androidx.work.*
 import com.example.idea6.MainActivity
 import com.example.idea6.R
@@ -49,10 +50,14 @@ class RefreshWorkWorker(
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
+        val check = PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("notification", true)
+
         val notificationId = 1
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
-            notify(notificationId, builder.build())
+            if(check == true){
+                notify(notificationId, builder.build())
+            }
         }
 
         //Remake Notif

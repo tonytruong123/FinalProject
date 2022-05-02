@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         if (globalVar == 0){ relativeLayout1.setBackgroundResource(R.color.white)}
         if (globalVar == 1){ relativeLayout1.setBackgroundResource(R.color.scuff)}
 
-
+        val check = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification", true)
 
         val dir = getFilesDir()
 
