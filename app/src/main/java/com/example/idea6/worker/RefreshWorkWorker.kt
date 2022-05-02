@@ -7,20 +7,21 @@ import android.util.Log
 import android.util.Log.d
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.work.CoroutineWorker
-import androidx.work.WorkerParameters
+import androidx.work.*
 import com.example.idea6.MainActivity
 import com.example.idea6.R
 import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
+import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 class RefreshWorkWorker(
     private val context: Context,
     private val workerParameters: WorkerParameters
+
 ) : CoroutineWorker(context, workerParameters) {
     override suspend fun doWork(): Result {
 
@@ -53,6 +54,19 @@ class RefreshWorkWorker(
             // notificationId is a unique int for each notification that you must define
             notify(notificationId, builder.build())
         }
+
+        //Remake Notif
+        val imageWorker = OneTimeWorkRequestBuilder<RefreshWorkWorker>()
+            .setInitialDelay(24, TimeUnit.HOURS)
+            .addTag("Refresh Word Save")
+            .build()
+        // 2
+        val workManager = WorkManager.getInstance(applicationContext)
+        workManager.enqueueUniqueWork(
+            "Timed-Notif",
+            ExistingWorkPolicy.REPLACE,
+            imageWorker
+        )
 
         return Result.success()
     }

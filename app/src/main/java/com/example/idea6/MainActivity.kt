@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
 import android.widget.RelativeLayout
+import android.util.Log.d
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -21,6 +22,8 @@ import com.example.idea6.worker.TabPageAdapter
 import com.google.android.material.tabs.TabLayout
 import java.io.File
 import java.util.concurrent.TimeUnit
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class MainActivity : AppCompatActivity() {
@@ -56,12 +59,14 @@ class MainActivity : AppCompatActivity() {
         if (globalVar == 1){ relativeLayout1.setBackgroundResource(R.color.scuff)}
 
 
+
         val dir = getFilesDir()
 
         copyFile("dictionary_edit.xls")
         createNotificationChannel()
-        createPeriodicWorkRequest()
+        createTimedNotif()
     }
+
     private fun setUpTabBar()
     {
         val tabs = findViewById<TabLayout>(R.id.tabLayout)
@@ -119,6 +124,38 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun createTimedNotif(){
+        val hour = PreferenceManager.getDefaultSharedPreferences(this).getString("notification_hour", "8")!!.toInt()
+        val minute = PreferenceManager.getDefaultSharedPreferences(this).getString("notification_minute", "8")!!.toInt()
+
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("HH:mm:ss")
+        val formatted = current.format(formatter)
+        //d("testtime", hour.toString())
+        //d("testtime", minute.toString())
+        //d("testtime", formatted.toString())
+        val cur_time = formatted.split(":").toTypedArray()
+        var timediff = ((hour - cur_time[0].toInt()) * 3600) + ((minute - cur_time[1].toInt()) * 60) - cur_time[2].toInt()
+        //d("testtime", timediff.toString())
+
+        if(timediff < 0){
+            timediff += 86400
+        }
+        d("testtime", timediff.toString())
+
+        val imageWorker = OneTimeWorkRequestBuilder<RefreshWorkWorker>()
+            .setInitialDelay(timediff.toLong(), TimeUnit.SECONDS)
+            .addTag("Refresh Word Save")
+            .build()
+        // 2
+        workManager.enqueueUniqueWork(
+            "Timed-Notif",
+            ExistingWorkPolicy.REPLACE,
+            imageWorker
+        )
+    }
+
+    //For testing notification
     private fun createOneTimeWorkRequest() {
         // 1
         val imageWorker = OneTimeWorkRequestBuilder<RefreshWorkWorker>()
@@ -128,18 +165,6 @@ class MainActivity : AppCompatActivity() {
         workManager.enqueueUniqueWork(
             "oneTimeRefreshSave",
             ExistingWorkPolicy.KEEP,
-            imageWorker
-        )
-    }
-
-    private fun createPeriodicWorkRequest(){
-        //15 Min Repeating
-        val imageWorker = PeriodicWorkRequestBuilder<RefreshWorkWorker>(15, TimeUnit.MINUTES)
-            .addTag("Refresh Word Save")
-            .build()
-        workManager.enqueueUniquePeriodicWork(
-            "periodicRefeshSave",
-            ExistingPeriodicWorkPolicy.KEEP,
             imageWorker
         )
     }
