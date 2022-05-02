@@ -7,7 +7,10 @@ import androidx.preference.PreferenceFragmentCompat
 class NewSettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private lateinit var activity:MainActivity
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        activity = getActivity() as MainActivity
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
     }
 
@@ -29,5 +32,6 @@ class NewSettingsFragment : PreferenceFragmentCompat(),
         when (key) {
             "theme_color" -> activity?.recreate()
         }
+        activity.createTimedNotif()
     }
 }

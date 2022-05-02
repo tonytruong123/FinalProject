@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun createTimedNotif(){
+    public fun createTimedNotif(){
         val hour = PreferenceManager.getDefaultSharedPreferences(this).getString("notification_hour", "8")!!.toInt()
         val minute = PreferenceManager.getDefaultSharedPreferences(this).getString("notification_minute", "8")!!.toInt()
 
