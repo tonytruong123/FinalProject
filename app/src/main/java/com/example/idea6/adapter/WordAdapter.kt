@@ -1,5 +1,6 @@
 package com.example.idea6.adapter
 
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,17 +24,26 @@ class WordAdapter(
 
     override fun onBindViewHolder(holder: CustomDictViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.name, current.definition, customDictViewModel)
+        holder.bind(current.name, current.pronunciation, current.definition, customDictViewModel)
     }
 
     class CustomDictViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val word_mainView: TextView = itemView!!.findViewById(R.id.main_word)
         val word_defView: TextView = itemView!!.findViewById(R.id.word_def)
+        val word_pronView: TextView = itemView!!.findViewById(R.id.word_pron)
         val del_button: Button = itemView!!.findViewById(R.id.remove_word)
 
-        fun bind(text: String?, definition: String?, customDictViewModel: CustomDictViewModel) {
+        fun bind(text: String?, pron: String?, definition: String?, customDictViewModel: CustomDictViewModel) {
             word_mainView.text = text
             word_defView.text = definition
+
+            if(text == pron){
+                word_pronView.text = ""
+            }
+            else{
+                word_pronView.text = "/" + pron + "/"
+            }
+
             del_button.setOnClickListener{
                 if (text != null) {
                     customDictViewModel.delete(text)
